@@ -355,7 +355,7 @@ public class RCTMGLPointAnnotation extends AbstractMapFeature implements View.On
 
     public void refresh() {
         if (mChildView != null) {
-            refreshBitmap(mChildView);
+            // refreshBitmap(mChildView);
         }
     }
 }
