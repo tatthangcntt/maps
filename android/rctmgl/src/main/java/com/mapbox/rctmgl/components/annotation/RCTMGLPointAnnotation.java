@@ -136,7 +136,8 @@ public class RCTMGLPointAnnotation extends AbstractMapFeature implements View.On
             return;
         }
         if (left != oldLeft || right != oldRight || top != oldTop || bottom != oldBottom) {
-            refreshBitmap(v, left, top, right, bottom);
+            return;
+            // refreshBitmap(v, left, top, right, bottom);
         }
     }
 
