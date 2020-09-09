@@ -45,17 +45,17 @@ public class BitmapUtils {
             return  bitmap;
         }
 
-        // try {
-        //     InputStream bitmapStream = new URL(url).openStream();
-        //     bitmap = BitmapFactory.decodeStream(bitmapStream, null, options);
-        //     bitmapStream.close();
-        //     addImage(url, bitmap);
-        // } catch (Exception e) {
-        //     Log.w(LOG_TAG, e.getLocalizedMessage());
-        //     bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8); // Returns a transparent bitmap
-        // }
+        try {
+            InputStream bitmapStream = new URL(url).openStream();
+            bitmap = BitmapFactory.decodeStream(bitmapStream, null, options);
+            bitmapStream.close();
+            addImage(url, bitmap);
+        } catch (Exception e) {
+            Log.w(LOG_TAG, e.getLocalizedMessage());
+            bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8); // Returns a transparent bitmap
+        }
 
-        // return bitmap;
+        return bitmap;
     }
 
     public static Bitmap getBitmapFromResource(Context context, String resourceName, BitmapFactory.Options options) {
@@ -100,7 +100,7 @@ public class BitmapUtils {
             int h = bottom - top;
             if (w > 0 && h > 0) {
                 bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-                // bitmap.eraseColor(Color.TRANSPARENT);
+                 bitmap.eraseColor(Color.TRANSPARENT);
                 Canvas canvas = new Canvas(bitmap);
                 v.draw(canvas);
             }

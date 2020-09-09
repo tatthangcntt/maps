@@ -3,7 +3,10 @@ package com.mapbox.rctmgl.components.annotation;
 import android.content.Context;
 import android.graphics.PointF;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 
 import com.mapbox.geojson.Point;
@@ -55,10 +58,12 @@ public class RCTMGLPointAnnotation extends AbstractMapFeature implements View.On
         super(context);
         mContext = context;
         mManager = manager;
+        Log.e("Thangntmapbox","RCTMGLPointAnnotation");
     }
 
     @Override
     public void addView(View childView, int childPosition) {
+        Toast.makeText(this.mContext,"addToMap", Toast.LENGTH_LONG);
         if (childView instanceof RCTMGLCallout) {
             mCalloutView = childView;
         } else {
@@ -95,7 +100,7 @@ public class RCTMGLPointAnnotation extends AbstractMapFeature implements View.On
         mMapView = mapView;
         mMap = mapView.getMapboxMap();
         makeMarker();
-
+//        Toast.makeText(this.mContext,"addToMap", Toast.LENGTH_LONG);
         if (mChildView != null) {
             if (!mChildView.isAttachedToWindow()) {
                 mMapView.offscreenAnnotationViewContainer().addView(mChildView);
@@ -136,8 +141,8 @@ public class RCTMGLPointAnnotation extends AbstractMapFeature implements View.On
             return;
         }
         if (left != oldLeft || right != oldRight || top != oldTop || bottom != oldBottom) {
-            return;
-            // refreshBitmap(v, left, top, right, bottom);
+            //return;
+             refreshBitmap(v, left, top, right, bottom);
         }
     }
 
@@ -355,7 +360,7 @@ public class RCTMGLPointAnnotation extends AbstractMapFeature implements View.On
 
     public void refresh() {
         if (mChildView != null) {
-            // refreshBitmap(mChildView);
+            refreshBitmap(mChildView);
         }
     }
 }

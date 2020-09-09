@@ -13,10 +13,10 @@ const ANNOTATION_SIZE = 45;
 const styles = StyleSheet.create({
   annotationContainer: {
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     borderColor: 'rgba(0, 0, 0, 0.45)',
     borderRadius: ANNOTATION_SIZE / 2,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 0,
     height: ANNOTATION_SIZE,
     justifyContent: 'center',
     overflow: 'hidden',
@@ -54,7 +54,7 @@ class AnnotationWithRemoteImage extends React.Component {
         ref={(ref) => (this.annotationRef = ref)}>
         <View style={styles.annotationContainer}>
           <Image
-            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+            source={require('./icon_maps.png')}
             style={{width: ANNOTATION_SIZE, height: ANNOTATION_SIZE}}
             onLoad={() => this.annotationRef.refresh()}
           />
